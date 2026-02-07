@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal Day</title>
+
+<style>
+
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background: linear-gradient(180deg, #ffffff, #fdf8f2);
+  color: #2b2b2b;
+  text-align: center;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.poetic {
+  max-width: 600px;
+  line-height: 1.8;
+  font-size: 18px;
+  opacity: 0;
+  transition: 1s;
+}
+
+.gold-btn {
+  margin-top: 25px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(45deg, #d4af37, #f6e27a);
+  color: #000;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  transition: 0.3s;
+}
+
+.gold-btn:hover {
+  transform: scale(1.08);
+}
+
+.photo {
+  width: 240px;
+  border-radius: 18px;
+  margin-top: 25px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  opacity: 0;
+  transition: 1.2s;
+}
+
+.buttons {
+  margin-top: 30px;
+  display: none;
+  gap: 15px;
+}
+
+.choice {
+  padding: 12px 24px;
+  border-radius: 25px;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.yes {
+  background: linear-gradient(45deg, #d4af37, #f6e27a);
+}
+
+.no {
+  background: #eee;
+}
+
+.choice:hover {
+  transform: scale(1.07);
+}
+
+.finalText {
+  margin-top: 20px;
+  font-size: 18px;
+  opacity: 0;
+  transition: 1s;
+}
+
+/* GIF styling */
+
+#bonkGif {
+  width: 140px;
+  margin-top: 20px;
+  display: none;
+  animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Hey…</h1>
+
+  <p id="line1" class="poetic">
+    It’s Proposal Day.
+  </p>
+
+  <button id="startBtn" class="gold-btn" onclick="startJourney()">
+    Click only if your heart is calm
+  </button>
+
+  <p id="line2" class="poetic">
+    Somewhere between every laugh and every quiet moment,
+    I realised something…
+  </p>
+
+  <p id="line3" class="poetic">
+    I don’t just want memories with you.
+    I want a future that keeps choosing you.
+  </p>
+
+  <!-- CHANGE THIS PHOTO -->
+  <img id="photo" class="photo" src="ring.jpg">
+
+  <div id="proposal" class="finalText">
+    Will you be mine… not just today… but in all the days we haven’t lived yet?
+  </div>
+
+  <div id="buttons" class="buttons">
+    <button class="choice yes" onclick="yes()">Yes 💛</button>
+    <button class="choice no" onclick="no()">No 😌</button>
+  </div>
+
+  <div id="response" class="finalText"></div>
+
+  <!-- EMBEDDED BONK GIF VIA LINK -->
+  <img 
+    id="bonkGif"
+    src="https://media.giphy.com/media/9Y5BbDSkSTiY8/giphy.gif"
+    alt="bonk"
+  >
+
+</div>
+
+<script>
+
+function startJourney() {
+
+  document.getElementById("startBtn").style.display = "none";
+
+  setTimeout(() => {
+    document.getElementById("line1").style.opacity = "1";
+  }, 300);
+
+  setTimeout(() => {
+    document.getElementById("line2").style.opacity = "1";
+  }, 1800);
+
+  setTimeout(() => {
+    document.getElementById("line3").style.opacity = "1";
+  }, 3500);
+
+  setTimeout(() => {
+    document.getElementById("photo").style.opacity = "1";
+  }, 5200);
+
+  setTimeout(() => {
+    document.getElementById("proposal").style.opacity = "1";
+    document.getElementById("buttons").style.display = "flex";
+  }, 6500);
+}
+
+function yes() {
+  document.getElementById("response").innerHTML =
+    "Thank you my love. for choosing to be mine as well. I love you.";
+  document.getElementById("response").style.opacity = "1";
+}
+
+function no() {
+  const response = document.getElementById("response");
+  const gif = document.getElementById("bonkGif");
+
+  response.innerHTML = "Nice try. That answer has been rejected 😌";
+  response.style.opacity = "1";
+
+  gif.style.display = "block";
+
+  setTimeout(() => {
+    gif.style.display = "none";
+  }, 3000);
+}
+
+</script>
+
+</body>
+</html>
